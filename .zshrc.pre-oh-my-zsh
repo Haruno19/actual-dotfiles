@@ -1,0 +1,17 @@
+PATH="/usr/local/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export WEATHER_CLI_API=REDACTED
+PROMPT='%B %b %n%B [%b%.%B] ►%b '
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+#LOGIN 
+cat /Users/haru/Documents/ASCII\ Arts/login.txt
+#date=`date +"%D %T"`
+#echo '\n Navi login: '$date
+#echo ' Welcome back! \n'
+#cat /Users/haru/Documents/ASCII\ Arts/welcome.txt
