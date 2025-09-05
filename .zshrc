@@ -5,6 +5,7 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 #*** ZSH ***#
 
@@ -12,7 +13,7 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
-ZSH_THEME="aditya" # set by `omz`
+ZSH_THEME="fox" # set by `omz`
 source $ZSH/oh-my-zsh.sh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -26,7 +27,7 @@ code () { VSCODE_CWD="$PWD" open -n -a "/Users/haru/Applications/Visual Studio C
 alias gncc="/opt/homebrew/bin/gcc-13"
 alias gn++="/opt/homebrew/bin/g++-13"
 alias cd=z
-alias brw=brew
+alias venv="source .venv/bin/activate"
 
 #*** EVALS ***#
 
@@ -40,4 +41,4 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
-fastfetch
+#fastfetch

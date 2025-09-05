@@ -1,0 +1,20 @@
+# Ignore history files
+--ignore='\.bash_history'
+--ignore='\.zsh_history'
+--ignore='\.python_history'
+--ignore='\.lesshst'
+--ignore='\.CFUserTextEncoding'
+
+# Ignore ephemeral or cache directories
+--ignore='\.cache'
+--ignore='\.Trash'
+--ignore='\.local'
+--ignore='\.DS_Store'
+
+# Ignore backups and pre files
+--ignore='\.(bak|bck|pre-.*)$'
+
+# Ignore stow-unrelated hidden files
+--ignore='Icon\?'
+--ignore='Icon'
+--ignore='\.zcompdump.*'
