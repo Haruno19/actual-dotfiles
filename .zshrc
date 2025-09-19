@@ -6,6 +6,7 @@ export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export HOMEBREW_NO_ENV_HINTS=1
 
 #*** ZSH ***#
 
@@ -20,7 +21,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 #*** FUNCTIONS ***#
 
-code () { VSCODE_CWD="$PWD" open -n -a "/Users/haru/Applications/Visual Studio Code.app" --args $* ;}
+code () { VSCODE_CWD="$PWD" open -n -a "/Applications/Visual Studio Code.app" --args $* ;}
 
 #*** ALIAS ***#
 
