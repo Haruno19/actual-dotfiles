@@ -14,7 +14,7 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
-ZSH_THEME="fox" # set by `omz`
+ZSH_THEME="aditya" # set by `omz`
 source $ZSH/oh-my-zsh.sh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -42,4 +42,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
-#fastfetch
+#fastfetch# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/haru/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions

@@ -1,0 +1,22 @@
+# Warm Monochrome Light
+palette = 0=#695A40
+palette = 1=#2E2412
+palette = 2=#4A3C25
+palette = 3=#4A3C25
+palette = 4=#2E2412
+palette = 5=#150F05
+palette = 6=#4A3C25
+palette = 7=#150F05
+palette = 8=#695A40
+palette = 9=#2E2412
+palette = 10=#4A3C25
+palette = 11=#4A3C25
+palette = 12=#2E2412
+palette = 13=#150F05
+palette = 14=#4A3C25
+palette = 15=#150F05
+background = #C9BA96
+foreground = #150F05
+cursor-color = #150F05
+selection-background = #AD9C74
+selection-foreground = #150F05

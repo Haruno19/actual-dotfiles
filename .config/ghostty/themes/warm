@@ -1,0 +1,22 @@
+# Warm Monochrome Dark
+palette = 0=#2A2012
+palette = 1=#8C734E
+palette = 2=#B3976D
+palette = 3=#B3976D
+palette = 4=#8C734E
+palette = 5=#D1B994
+palette = 6=#B3976D
+palette = 7=#D1B994
+palette = 8=#2A2012
+palette = 9=#8C734E
+palette = 10=#B3976D
+palette = 11=#B3976D
+palette = 12=#8C734E
+palette = 13=#D1B994
+palette = 14=#B3976D
+palette = 15=#D1B994
+background = #1B140A
+foreground = #D1B994
+cursor-color = #D1B994
+selection-background = #231B0E
+selection-foreground = #D1B994

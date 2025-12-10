@@ -14,13 +14,13 @@
     "break",
     {
       "type": "custom",
-      "format": "             おかえり❣︎",
+      "format": "               おかえり❣︎",
       "outputColor": "yellow"
     },
     {
       "type": "custom",
       "outputColor": "default",
-      "format": "┌─────────────────────────────────┐"
+      "format": "┌────────────────────────────────────┐"
     },
     "break",
     {
@@ -54,12 +54,12 @@
     "break",
     {
       "type": "custom",
-      "format": "└─────────────────────────────────┘"
+      "format": "└────────────────────────────────────┘"
     },
     {
       "type": "colors",
       "symbol": "square",
-      "paddingLeft": 10
+      "paddingLeft": 12
     }
   ]
 }
