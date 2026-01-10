@@ -11,7 +11,6 @@ macos-window-buttons = visible
 window-title-font-family = Osaka-Mono
 
 font-family = Osaka-Mono
-font-family-italic = Space Mono Italic
 font-size = 13
 
 keybind = ctrl+opt+enter=ignore
