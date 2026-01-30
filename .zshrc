@@ -13,6 +13,7 @@ export HOMEBREW_NO_ENV_HINTS=1
 plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
+  zsh-shift-select
 )
 ZSH_THEME="aditya" # set by `omz`
 source $ZSH/oh-my-zsh.sh
@@ -29,6 +30,8 @@ alias gncc="/opt/homebrew/bin/gcc-13"
 alias gn++="/opt/homebrew/bin/g++-13"
 alias cd=z
 alias venv="source .venv/bin/activate"
+alias sshon="sudo /usr/sbin/sshd -p 2219"
+alias sshoff="sudo pkill -9 sshd"
 
 #*** EVALS ***#
 
