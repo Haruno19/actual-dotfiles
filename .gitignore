@@ -1,0 +1,39 @@
+# macOS
+**/.DS_Store
+.CFUserTextEncoding
+
+# Claude Code runtime data
+.claude/
+.claude.json
+.claude.json.backup
+
+# VS Code — keep settings.json and keybindings.json, ignore the rest
+.vscode/extensions/
+.vscode/cli/
+.vscode/argv.json
+
+# Oh My Zsh installation
+.oh-my-zsh/
+
+# .NET runtime caches
+.aspnet/
+.dotnet/
+.nuget/
+.templateengine/
+
+# ML model caches
+.EasyOCR/
+.keras/
+
+# Swift package manager
+.swiftpm/
+
+# Zsh completion dumps
+.zcompdump*
+
+# App data/logs (not config)
+.config/mole/*.log
+.config/mole/operations.log
+.config/mole/purge_paths
+.config/qBittorrent/qBittorrent-data.ini
+.config/cagent/

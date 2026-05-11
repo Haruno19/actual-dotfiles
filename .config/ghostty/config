@@ -2,12 +2,12 @@ theme = everforest
 
 bold-is-bright = true
 
-window-height = 17
-window-width = 78
+window-height = 21
+window-width = 82
 
 macos-titlebar-style = tabs
 macos-window-buttons = visible
-
+macos-icon = official
 window-title-font-family = Osaka-Mono
 
 font-family = Osaka-Mono
@@ -15,9 +15,9 @@ font-size = 13
 
 keybind = ctrl+opt+enter=ignore
 
-background-blur = true
+background-blur = macos-glass-clear 
 background-opacity = 0.75
-background-blur-radius = 40
+background-blur-radius = 30
 
 keybind = shift+enter=text:\n
 
