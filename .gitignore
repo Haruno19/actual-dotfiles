@@ -31,6 +31,10 @@
 # Zsh completion dumps
 .zcompdump*
 
+# SSH — track config only, never keys or known_hosts
+.ssh/id_*
+.ssh/known_hosts*
+
 # App data/logs (not config)
 .config/mole/*.log
 .config/mole/operations.log
