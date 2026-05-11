@@ -8,7 +8,9 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export DOTNET_ROOT=$(brew --prefix dotnet@9)/libexec
 export PATH="$DOTNET_ROOT:$PATH"
 export HOMEBREW_NO_ENV_HINTS=1
-export CLICOLOR=1
+eval "$(gdircolors -b)"
+LS_COLORS="${LS_COLORS/di=01;34:/di=01;33:}"  # remap dirs to ochre (palette 3 = #DBBC7F)
+alias ls='gls --color=auto'
 
 #*** ZSH ***#
 
@@ -44,8 +46,8 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # case-insensitive
 
 # Keybindings
 bindkey -e  # emacs mode (what OMZ defaults to)
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
 
 # Plugins (Homebrew-installed)
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
