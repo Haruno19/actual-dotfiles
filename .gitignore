@@ -28,6 +28,9 @@
 # Swift package manager
 .swiftpm/
 
+# npm cache
+.npm/
+
 # Zsh completion dumps
 .zcompdump*
 
