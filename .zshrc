@@ -1,9 +1,6 @@
 #*** EXPORT ***#
 
 export PATH="/usr/local/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export DOTNET_ROOT=$(brew --prefix dotnet@9)/libexec
 export PATH="$DOTNET_ROOT:$PATH"
