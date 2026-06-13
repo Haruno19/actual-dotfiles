@@ -7,10 +7,9 @@
 .claude.json
 .claude.json.backup
 
-# VS Code — keep settings.json and keybindings.json, ignore the rest
-.vscode/extensions/
-.vscode/cli/
-.vscode/argv.json
+# VS Code — machine-specific (extensions, cli, argv). Global settings.json lives
+# in ~/Library/Application Support/Code/User/, not here, so ignore the whole dir.
+.vscode/
 
 # Oh My Zsh installation
 .oh-my-zsh/
@@ -44,3 +43,5 @@
 .config/mole/purge_paths
 .config/qBittorrent/qBittorrent-data.ini
 .config/cagent/
+.config/zed/prompts/
+.config/htop/*.tmp.*
