@@ -32,11 +32,7 @@ every launch and `stow .` won't be available at all.
 
 **Apps with configs tracked under `.config/` (install if you use them):**
 
-bottom · fastfetch · ghostty · htop · zed · qBittorrent · mole
-
-> Note: there is intentionally **no Brewfile**. A new machine should get only the
-> pieces actually needed, installed deliberately — not a bulk restore of whatever
-> happened to be on the old Mac.
+bottom · fastfetch · ghostty · htop · zed · mole
 
 ### 2. Clone the repo (with submodules)
 
