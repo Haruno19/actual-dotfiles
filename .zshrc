@@ -1,6 +1,6 @@
 #*** EXPORT ***#
 
-export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:/Users/haru/dotfiles/scripts:$PATH"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export DOTNET_ROOT=$(brew --prefix dotnet@9)/libexec
 export PATH="$DOTNET_ROOT:$PATH"
