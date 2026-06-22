@@ -53,6 +53,7 @@ i7="${DIM}gpu  ${G}${gpu}%${X}"
 i8="${DIM}ram  ${T}${rused} ${DIM}/ ${rtot} GB · ${T}${rpct}%${X}"
 i9="${DIM}disk ${T}${dpct} ${DIM}· ${davail} GB free${X}"
 
+clear
 echo
 printf '%s\n' "${K}      ╱▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔╲${X}"
 printf '%s\n' "${K}   ▗▄████████████████████▄▖${X}"

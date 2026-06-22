@@ -28,7 +28,7 @@
     // {
     //   "type": "custom",
     //   "format": "               おかえり❣︎",
-    //   "outputColor": "yellow"
+    //   "outputColor": "red"
     // },
     {
       "type": "custom",
@@ -40,29 +40,29 @@
       "type": "users",
       "key": "   ",
       "format": "{name} @ Navi",
-      "keyColor": "cyan"
+      "keyColor": "red"
     },
     {
       "type": "host",
       "key": "   ",
       "format": "{2}",
-      "keyColor": "cyan"
+      "keyColor": "red"
     },
     {
       "type": "os",
       "key": "   ",
-      "keyColor": "cyan"
+      "keyColor": "red"
     },
     {
       "type": "cpu",
       "key": "   ",
       "format": "{1}",
-      "keyColor": "cyan"
+      "keyColor": "red"
     },
     {
       "type": "packages",
       "key": "   ",
-      "keyColor": "cyan"
+      "keyColor": "red"
     },
     "break",
     {
