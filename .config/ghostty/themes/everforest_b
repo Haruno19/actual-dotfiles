@@ -1,4 +1,4 @@
-background = #0E0E0E
+background = #161411
 foreground = #D3C6AA
 cursor-color = #979D92
 selection-background = #5D5C69
@@ -10,12 +10,12 @@ palette = 3=#DBBC7F
 palette = 4=#7FBBB3
 palette = 5=#D699B6
 palette = 6=#83C092
-palette = 7=#9DA9A0
-palette = 8=#9DA9A0
+palette = 7=#c0d6e5
+palette = 8=#949ea3
 palette = 9=#DD9C9D
-palette = 10=#BDD5A0
-palette = 11=#E8D5A5
-palette = 12=#A5D4CC
-palette = 13=#EBB5CD
+palette = 10=#bae6c9
+palette = 11=#cac7ad
+palette = 12=#a8cadd
+palette = 13=#d3a4b3
 palette = 14=#DBBC7F
 palette = 15=#83C092

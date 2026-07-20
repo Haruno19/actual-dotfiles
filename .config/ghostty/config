@@ -7,6 +7,10 @@ window-width = 82
 
 macos-titlebar-style = tabs
 macos-window-buttons = visible
+macos-icon = custom-style
+macos-icon-frame = beige
+macos-icon-screen-color = 000000
+macos-icon-ghost-color = FFFFFF
 window-title-font-family = Osaka-Mono
 
 font-family = Osaka-Mono
@@ -14,9 +18,9 @@ font-size = 13
 
 keybind = ctrl+opt+enter=ignore
 
-background-blur = macos-glass-clear
+background-blur = macos-glass-regular
 background-opacity = 0.85
-background-blur-radius = 30
+background-blur-radius = 60
 
 keybind = shift+enter=text:\n
 
