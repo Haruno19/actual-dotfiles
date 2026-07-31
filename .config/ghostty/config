@@ -1,4 +1,4 @@
-theme = everforest
+theme = everforest_b
 
 bold-is-bright = false
 
@@ -20,7 +20,7 @@ keybind = ctrl+opt+enter=ignore
 
 background-blur = macos-glass-regular
 background-opacity = 0.85
-background-blur-radius = 60
+background-blur-radius = 90
 
 keybind = shift+enter=text:\n
 

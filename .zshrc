@@ -27,8 +27,8 @@ git_prompt_info() {
 
 setopt PROMPT_SUBST
 
-# source ~/.zsh/themes/cdimascio-lambda.zsh
-source ~/.zsh/themes/aditya.zsh
+source ~/.zsh/themes/cdimascio-lambda.zsh
+# source ~/.zsh/themes/aditya.zsh
 # source ~/.zsh/themes/haru_min.zsh
 
 # History

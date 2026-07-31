@@ -1,0 +1,9 @@
+[[timer]]
+name = "Stretch"
+start = "09:00:00"
+end = "18:00:00"
+enabled = true
+
+[timer.interval]
+secs = 3600
+nanos = 0
