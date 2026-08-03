@@ -1,0 +1,233 @@
+#!/usr/bin/env zsh
+# dotnet-cleanup — stage superseded .NET SDK/runtime payload for removal.
+#
+# Microsoft's macOS .pkg is side-by-side by design: every payload path is
+# version-scoped and each component registers its own pkgutil receipt, so a new
+# version never overwrites (and never removes) the old one. Homebrew's cask
+# `uninstall pkgutil:` stanza runs on `brew uninstall`, not on upgrade, so every
+# `brew upgrade dotnet-sdk` strands the previous version with nothing to collect
+# it. This finds those and moves them to the Trash with a restore script.
+#
+# Keeps the newest patch within each major, per versioned directory.
+# Dry-run by default; --apply performs the move.
+
+emulate -L zsh
+setopt err_exit no_unset pipe_fail extended_glob
+
+ROOT=/usr/local/share/dotnet
+APPLY=0
+
+usage() {
+  cat <<'EOF'
+usage: dotnet-cleanup [--apply] [--root DIR]
+
+  (no args)     dry run — list superseded payload and total size
+  --apply       move it to the Trash and forget its receipts
+  --root DIR    dotnet root to scan (default /usr/local/share/dotnet)
+
+Keeps the newest patch of each major version. Prerelease directories (any
+name containing '-') are never touched. Writes a manifest and a restore
+script to ~/.dotnet-cleanup-<timestamp>/.
+EOF
+}
+
+while (( $# )); do
+  case $1 in
+    --apply) APPLY=1; shift ;;
+    --root)  ROOT=${2:?--root needs a directory}; shift 2 ;;
+    -h|--help) usage; return 0 2>/dev/null || exit 0 ;;
+    *) print -u2 "unknown option: $1"; usage >&2; exit 2 ;;
+  esac
+done
+
+[[ -d $ROOT ]] || { print -u2 "ERROR: no dotnet root at $ROOT"; exit 1 }
+
+if (( EUID == 0 )) && [[ -n ${SUDO_USER:-} ]]; then
+  REAL_USER=$SUDO_USER
+  REAL_HOME=$(eval print -r -- "~$SUDO_USER")
+else
+  REAL_USER=$(id -un)
+  REAL_HOME=$HOME
+fi
+
+TS=$(date +%Y%m%d-%H%M%S)
+TRASH=$REAL_HOME/.Trash/dotnet-cleanup-$TS
+STATE=$REAL_HOME/.dotnet-cleanup-$TS
+
+# --- Directories whose children are version names -----------------------------
+# sdk-manifests is excluded on purpose: those are feature bands (9.0.100), not
+# patch versions, so "newest wins" would be the wrong rule there.
+containers=(sdk shared/Microsoft.NETCore.App shared/Microsoft.AspNetCore.App host/fxr templates)
+for p in $ROOT/packs/*(N/); do
+  containers+=("packs/${p:t}")
+done
+
+# --- Find superseded versions -------------------------------------------------
+typeset -a superseded
+for c in $containers; do
+  [[ -d $ROOT/$c ]] || continue
+  local -a versions
+  versions=(${ROOT}/$c/<->.<->.<->(N/:t))
+  (( $#versions )) || continue
+  versions=(${(f)"$(print -rl -- $versions | sort -V)"})
+  local -a majors
+  majors=(${(u)${versions%%.*}})
+  for major in $majors; do
+    local -a same
+    same=(${(M)versions:#${major}.*})
+    same=(${(f)"$(print -rl -- $same | sort -V)"})
+    local keep=$same[-1]
+    for v in $same; do
+      [[ $v == $keep ]] && continue
+      superseded+=("$c/$v")
+    done
+  done
+done
+
+if (( ! $#superseded )); then
+  print "Nothing superseded — $ROOT is clean."
+  exit 0
+fi
+
+# --- Guard: never remove the SDK currently in use -----------------------------
+current_sdk=$($ROOT/dotnet --version 2>/dev/null || true)
+if [[ -n $current_sdk ]] && (( ${superseded[(I)sdk/$current_sdk]} )); then
+  print -u2 "ERROR: refusing to remove sdk/$current_sdk — it is the active SDK."
+  exit 1
+fi
+
+# --- Report -------------------------------------------------------------------
+print "dotnet root: $ROOT"
+[[ -n $current_sdk ]] && print "active SDK:  $current_sdk"
+print
+print "Superseded payload:"
+for rel in $superseded; do
+  printf '  %6s  %s\n' "$(du -sh $ROOT/$rel 2>/dev/null | cut -f1)" "$rel"
+done
+print
+printf 'total: %s across %d path(s)\n' \
+  "$(du -shc ${ROOT}/${^superseded} 2>/dev/null | tail -1 | cut -f1)" $#superseded
+
+if (( ! APPLY )); then
+  print
+  print "Dry run. Re-run with: sudo $0 --apply"
+  exit 0
+fi
+
+# --- Only demand root if the payload actually needs it ------------------------
+needs_root=0
+for rel in $superseded; do
+  [[ -w ${ROOT}/${rel:h} ]] || needs_root=1
+done
+if (( needs_root && EUID != 0 )); then
+  print -u2
+  print -u2 "ERROR: --apply needs root here (payload is owned by root:wheel)."
+  print -u2 "Run: sudo $0 --apply"
+  exit 1
+fi
+
+# --- Move ---------------------------------------------------------------------
+print
+print "==> Moving to $TRASH"
+mkdir -p $TRASH $STATE
+typeset -a moved
+for rel in $superseded; do
+  [[ -e $ROOT/$rel ]] || { print "    skip (absent): $rel"; continue }
+  mkdir -p $TRASH/${rel:h}
+  mv $ROOT/$rel $TRASH/$rel
+  print "    moved: $rel"
+  moved+=($rel)
+done
+chown -R $REAL_USER $TRASH 2>/dev/null || true
+
+# --- Forget receipts, only for versions gone from the whole root ---------------
+# Receipts describe the system install. If --root points somewhere else, they
+# say nothing about it, so leave them alone.
+typeset -a forgotten
+if [[ $ROOT != /usr/local/share/dotnet ]]; then
+  print "==> Skipping pkgutil receipts (--root is not the system install)"
+else
+print "==> Forgetting pkgutil receipts"
+for ver in ${(u)${moved:t}}; do
+  if [[ -n $(find $ROOT -maxdepth 3 -type d -name $ver 2>/dev/null) ]]; then
+    print "    keep receipts for $ver (still present elsewhere)"
+    continue
+  fi
+  for r in ${(f)"$(pkgutil --pkgs 2>/dev/null | grep "^com\.microsoft\.dotnet\..*[^0-9]${ver}[^0-9]" || true)"}; do
+    [[ -n $r ]] || continue
+    if pkgutil --forget $r >/dev/null 2>&1; then
+      print "    forgot: $r"
+      forgotten+=($r)
+    fi
+  done
+done
+fi
+
+# --- Manifest + restore script ------------------------------------------------
+{
+  print ".NET superseded-payload cleanup — $TS"
+  print
+  print "root:  $ROOT"
+  print "trash: $TRASH"
+  print
+  print "PATHS MOVED ($#moved):"
+  print -rl -- "  "${^moved}
+  print
+  print "RECEIPTS FORGOTTEN ($#forgotten):"
+  (( $#forgotten )) && print -rl -- "  "${^forgotten} || print "  (none)"
+  print
+  print "RESTORE: sudo $STATE/restore.sh"
+  print "  Restores files only. 'pkgutil --forget' is one-way; receipts are"
+  print "  bookkeeping and the restored SDK works without them. To re-register:"
+  print "  brew reinstall --cask dotnet-sdk"
+} > $STATE/manifest.txt
+
+{
+  print '#!/usr/bin/env zsh'
+  print "# Restore the payload moved by dotnet-cleanup on $TS."
+  print 'emulate -L zsh'
+  print 'setopt err_exit no_unset pipe_fail'
+  print
+  print "ROOT=${(q)ROOT}"
+  print "TRASH=${(q)TRASH}"
+  print
+  print '[[ -d $TRASH ]] || {'
+  print '  print -u2 "ERROR: $TRASH is gone — the Trash was emptied."'
+  print '  print -u2 "Recover with: brew reinstall --cask dotnet-sdk"'
+  print '  exit 1'
+  print '}'
+  print
+  for rel in $moved; do
+    print "if [[ -e \$ROOT/${(q)rel} ]]; then"
+    print "  print '  skip (already present): ${rel}'"
+    print "else"
+    print "  mkdir -p \$ROOT/${(q)${rel:h}}"
+    print "  mv \$TRASH/${(q)rel} \$ROOT/${(q)rel}"
+    print "  chown -R root:wheel \$ROOT/${(q)rel} 2>/dev/null || true"
+    print "  print '  restored: ${rel}'"
+    print "fi"
+  done
+  print
+  print '[[ -x $ROOT/dotnet ]] && $ROOT/dotnet --list-sdks || true'
+} > $STATE/restore.sh
+chmod +x $STATE/restore.sh
+chown -R $REAL_USER $STATE 2>/dev/null || true
+
+# --- Verify -------------------------------------------------------------------
+print "==> Verifying"
+typeset -i fail=0
+for rel in $moved; do
+  [[ -e $ROOT/$rel ]] && { print -u2 "    STILL PRESENT: $rel"; fail=1 }
+done
+(( fail )) || print "    all moved paths gone from $ROOT"
+
+if [[ -x $ROOT/dotnet ]]; then
+  print "==> Remaining install"
+  $ROOT/dotnet --list-sdks
+  $ROOT/dotnet --list-runtimes
+fi
+
+print
+print "Manifest: $STATE/manifest.txt"
+print "Restore:  sudo $STATE/restore.sh"
+print "Emptying the Trash makes this permanent."

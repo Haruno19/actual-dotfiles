@@ -3,7 +3,7 @@
   "logo": {
     "source": "/Users/haru/.config/fastfetch/apple.png",
     "type": "kitty-direct",
-    "width": 18,
+    "width": 12,
     "padding": {
       "top": 1,
       "left": 3
@@ -23,8 +23,6 @@
     // "padding": { "top": 1, "left": 2, "right": 6 }
   },
   "modules": [
-    "break",
-    "break",
     // {
     //   "type": "custom",
     //   "format": "                おかえり",
@@ -38,30 +36,30 @@
     "break",
     {
       "type": "users",
-      "key": "   ",
+      "key": "    ",
       "format": "{name} @ Navi",
       "keyColor": "green"
     },
     {
       "type": "host",
-      "key": "   ",
+      "key": "    ",
       "format": "{2}",
       "keyColor": "yellow"
     },
     {
       "type": "os",
-      "key": "   ",
+      "key": "    ",
       "keyColor": "red"
     },
     {
       "type": "cpu",
-      "key": "   ",
+      "key": "    ",
       "format": "{1}",
       "keyColor": "magenta"
     },
     {
       "type": "packages",
-      "key": "   ",
+      "key": "    ",
       "keyColor": "cyan"
     },
     "break",

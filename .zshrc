@@ -2,7 +2,7 @@
 
 export PATH="/usr/local/bin:/Users/haru/dotfiles/scripts:$PATH"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export DOTNET_ROOT=$(brew --prefix dotnet@9)/libexec
+export DOTNET_ROOT=/usr/local/share/dotnet
 export PATH="$DOTNET_ROOT:$PATH"
 export HOMEBREW_NO_ENV_HINTS=1
 eval "$(gdircolors -b)"

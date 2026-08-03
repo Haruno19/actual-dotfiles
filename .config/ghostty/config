@@ -1,4 +1,4 @@
-theme = everforest_b
+theme = everforest
 
 bold-is-bright = false
 
@@ -9,8 +9,8 @@ macos-titlebar-style = tabs
 macos-window-buttons = visible
 macos-icon = custom-style
 macos-icon-frame = beige
-macos-icon-screen-color = 000000
-macos-icon-ghost-color = FFFFFF
+macos-icon-screen-color = 1e1e1e
+macos-icon-ghost-color = ffffff
 window-title-font-family = Osaka-Mono
 
 font-family = Osaka-Mono
