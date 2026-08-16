@@ -19,7 +19,7 @@ font-size = 13
 keybind = ctrl+opt+enter=ignore
 
 background-blur = macos-glass-regular
-background-opacity = 0.85
+background-opacity = 0.8
 background-blur-radius = 90
 
 keybind = shift+enter=text:\n

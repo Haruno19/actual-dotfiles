@@ -5,6 +5,10 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export DOTNET_ROOT=/usr/local/share/dotnet
 export PATH="$DOTNET_ROOT:$PATH"
 export HOMEBREW_NO_ENV_HINTS=1
+# export DEVKITPRO=/opt/devkitpro
+# export DEVKITARM="${DEVKITPRO}/devkitARM"
+# export DEVKITPPC="${DEVKITPRO}/devkitPPC"
+# export PATH="${DEVKITPRO}/tools/bin:${PATH}"
 eval "$(gdircolors -b)"
 LS_COLORS="${LS_COLORS/di=01;34:/di=01;33:}"  # remap dirs to ochre (palette 3 = #DBBC7F)
 alias ls='gls --color=auto'
@@ -64,6 +68,7 @@ code () { VSCODE_CWD="$PWD" open -n -a "/Applications/Visual Studio Code.app" --
 alias gncc="/opt/homebrew/bin/gcc-13"
 alias gn++="/opt/homebrew/bin/g++-13"
 alias cd=z
+alias cat=bat
 alias venv="source .venv/bin/activate"
 alias sshon="sudo /usr/sbin/sshd -p 2219"
 alias sshoff="sudo pkill -9 sshd"
