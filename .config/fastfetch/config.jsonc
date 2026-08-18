@@ -3,7 +3,7 @@
   "logo": {
     "source": "/Users/haru/.config/fastfetch/apple_s.png",
     "type": "kitty-direct",
-    "width": 16,
+    "width": 15,
     "padding": {
       "left": 3
     }

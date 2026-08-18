@@ -56,8 +56,9 @@ source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/plugins/zsh-shift-select/zsh-shift-select.plugin.zsh
 
-# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
+#*** MACOS SETTINGS ***#
+# defaults write -g NSConvolutionOverride1 -float 10
+# defaults write -g NSSplitViewItemSidebarDefaultsToFloatingAppearance -bool false
 
 #*** FUNCTIONS ***#
 
