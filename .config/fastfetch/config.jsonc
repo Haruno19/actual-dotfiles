@@ -3,73 +3,44 @@
   "logo": {
     "source": "/Users/haru/.config/fastfetch/apple_s.png",
     "type": "kitty-direct",
-    "width": 15,
+    "width": 10,
     "padding": {
-      "left": 3
+      "left": 2
     }
-
-    // "type": "file",
-    // "source": "/Users/haru/.config/fastfetch/lantern.txt",
-    // "color": {
-    //   "1": "38;2;224;86;59",
-    //   "2": "38;2;239;106;79",
-    //   "3": "38;2;51;55;63",
-    //   "4": "38;2;63;69;80",
-    //   "5": "38;2;139;145;156",
-    //   "6": "38;2;91;102;120",
-    //   "7": "38;2;196;204;218"
-    // },
-    // "padding": { "top": 1, "left": 2, "right": 6 }
   },
   "modules": [
-    // {
-    //   "type": "custom",
-    //   "format": "                おかえり",
-    //   "outputColor": "yellow"
-    // },
-    {
-      "type": "custom",
-      "outputColor": "default",
-      "format": "╭───────────────────────────────────────╮"
-    },
-    "break",
     {
       "type": "users",
-      "key": "    ",
-      "format": "{name} @ Navi",
+      "key": "who",
+      "format": "{name}",
       "keyColor": "yellow"
     },
     {
       "type": "host",
-      "key": "    ",
+      "key": "host",
       "format": "{2}",
       "keyColor": "yellow"
     },
     {
       "type": "os",
-      "key": "    ",
+      "key": "os",
+      "format": "{3}",
       "keyColor": "yellow"
     },
     {
       "type": "cpu",
-      "key": "    ",
+      "key": "cpu",
       "format": "{1}",
       "keyColor": "yellow"
     },
     {
       "type": "packages",
-      "key": "    ",
+      "key": "pkgs",
       "keyColor": "yellow"
-    },
-    "break",
-    {
-      "type": "custom",
-      "format": "╰───────────────────────────────────────╯"
     },
     {
       "type": "colors",
-      "symbol": "circle",
-      "paddingLeft": 12
+      "symbol": "square"
     }
   ]
 }

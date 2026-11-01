@@ -10,7 +10,7 @@ macos-titlebar-style = tabs
 macos-icon = custom-style
 macos-icon-frame = beige
 macos-icon-screen-color = 1e1e1e
-macos-icon-ghost-color = 6B6B50
+macos-icon-ghost-color = ffffff
 window-title-font-family = Osaka-Mono
 
 font-family = Osaka-Mono
@@ -19,8 +19,6 @@ font-size = 13
 keybind = ctrl+opt+enter=ignore
 
 background-blur = macos-glass-regular
-background-opacity = 0.8
-background-blur-radius = 90
+background-opacity = 0.9
 
-
-shell-integration-features = sudo
+shell-integration-features = sudo,ssh-terminfo,ssh-env
