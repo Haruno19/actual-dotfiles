@@ -45,3 +45,6 @@
 .config/cagent/
 .config/zed/prompts/
 .config/htop/*.tmp.*
+
+# SSH host config (server addresses, usernames)
+.ssh/config
