@@ -1,6 +1,9 @@
 # dotfiles
 
-My macOS dotfiles, managed with [GNU Stow](https://www.gnu.org/software/stow/).
+<img width="1512" height="982" alt="Screenshot 2026-11-01 at 22 07 38" src="https://github.com/user-attachments/assets/364551a8-a102-417e-ab6b-85c23a6bcf6a" />
+
+
+macOS dotfiles, managed with [GNU Stow](https://www.gnu.org/software/stow/).
 The repo lives at `~/dotfiles` and its contents are symlinked into `~` via `stow .`.
 
 ---
