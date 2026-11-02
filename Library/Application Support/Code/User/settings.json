@@ -1,0 +1,84 @@
+{
+  "window.restoreWindows": "none",
+  "files.hotExit": "onExit",
+  "workbench.startupEditor": "none",
+  "extensions.ignoreRecommendations": true,
+  "files.associations": {
+      "*.pl": "prolog"
+  },
+  "editor.suggestSelection": "first",
+  "files.exclude": {
+      "**/.classpath": true,
+      "**/.project": true,
+      "**/.settings": true,
+      "**/.factorypath": true,
+      "**/.vscode": true,
+      "**/*.meta": true,
+      "**/Icon*": true,
+      "**/.python-version" : true,
+      "**/__pycache__" : true
+  },
+  "window.customTitleBarVisibility": "windowed",
+  "workbench.activityBar.location": "bottom",
+  "window.titleBarStyle" : "custom",
+  "chat.commandCenter.enabled": false,
+  "workbench.navigationControl.enabled": false,
+  
+  "editor.fontSize": 13,
+  "editor.fontFamily": "Menlo",
+  "workbench.productIconTheme": "icons-carbon",
+  "workbench.preferredDarkColorTheme": "Everforest Higure",
+  "workbench.preferredLightColorTheme": "Everforest Yoake",
+
+  "workbench.list.smoothScrolling": true,
+  "editor.smoothScrolling": true,
+  "editor.minimap.enabled": false,
+  "git.confirmSync": false,
+  "workbench.editor.editorActionsLocation": "hidden",
+  "telemetry.telemetryLevel": "off",
+  "security.workspace.trust.untrustedFiles": "open",
+  "remote.SSH.useLocalServer": false,
+  "remote.SSH.remotePlatform": {
+    "redix_seeweb": "linux"
+  },
+  "editor.wordWrap": "on",
+  "chat.agent.enabled": false,
+  "chat.checkpoints.enabled": false,
+  "chat.mcp.gallery.enabled": true,
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "scm.repositories.selectionMode": "single",
+  "git.blame.editorDecoration.enabled": true,
+  "git.mergeEditor": true,
+  "workbench.settings.showAISearchToggle": false,
+  "C_Cpp.copilotHover": "disabled",
+  "python.experiments.enabled": false,
+  "[csv]": {
+    "editor.inlayHints.maximumLength": 0
+  },
+  "claudeCode.preferredLocation": "sidebar",
+  "chat.agent.thinking.generateTitles": false,
+  "chat.agent.codeBlockProgress": false,
+  "chat.disableAIFeatures": true,
+  "chat.detectParticipant.enabled": false,
+  "git.openRepositoryInParentFolders": "always",
+  "workbench.iconTheme": "icons",
+  "mssql.connectionGroups": [
+    {
+      "name": "ROOT",
+      "id": "ROOT"
+    },
+    {
+      "name": "Redix",
+      "color": "#0F5BC5",
+      "id": "cbeb9f1e-0bd6-45e5-b0c9-3fd1406511b4",
+      "parentId": "ROOT"
+    }
+  ],
+  "mssql.showChangelogOnUpdate": false,
+  "workbench.experimental.modernUI": true,
+  "workbench.colorTheme": "Everforest Higure",
+  "claudeCode.hideOnboarding": true,
+  "workbench.browser.showInTitleBar": false,
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+}

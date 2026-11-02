@@ -18,3 +18,8 @@
 --ignore='Icon\?'
 --ignore='Icon'
 --ignore='\.zcompdump.*'
+
+# Not linked into ~: ssh config is kept out of the repo, scripts/ is put on
+# PATH directly by .zshrc
+--ignore='^\.ssh$'
+--ignore='^scripts$'

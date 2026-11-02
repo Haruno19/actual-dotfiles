@@ -65,8 +65,9 @@ symlinks into this repo):
 - `~/.bash_profile`
 - `~/.gitconfig`
 - `~/.zprofile` / login-shell defaults created by Terminal/iTerm on first launch
-- `~/.ssh/config`, `~/.ssh/known_hosts` *(if `~/.ssh` already exists — see step 5)*
 - Any `~/.config/<app>/` that an app created before you stowed (e.g. `gh`, `git`, `zed`)
+- `~/Library/Application Support/Code/User/settings.json` — VS Code creates it on
+  first launch
 
 Quick check for what's a real file vs. already a symlink:
 
@@ -87,18 +88,20 @@ does a dry run that prints what *would* happen without touching anything.
 
 - **`gh` auth:** the OAuth token lives in the macOS Keychain, not in the tracked
   config. Run `gh auth login` to re-authenticate.
-- **SSH:** if `~/.ssh` didn't exist, stow symlinks the whole directory into this
-  repo, so any new keys you generate land inside `~/dotfiles/.ssh` (keys are
-  gitignored, so they stay out of version control). If you'd rather keep `~/.ssh`
-  a real directory, create it *before* stowing so only `config` gets linked.
-  Ensure perms: `chmod 700 ~/.ssh` and `chmod 600 ~/.ssh/*`.
+- **SSH:** `~/.ssh/config` is not tracked (it holds server addresses). Recreate
+  it by hand. Ensure perms: `chmod 700 ~/.ssh` and `chmod 600 ~/.ssh/*`.
 - **Restart the shell** (or `exec zsh`) to pick everything up.
 
 ---
 
 ## Layout notes
 
-- `.stowrc` — ignores history files, caches, backups, and `.zcompdump*` during stow.
+- `.stowrc` — ignores history files, caches, backups, and `.zcompdump*` during stow,
+  plus `.ssh/` and `scripts/` (the latter is on `PATH` via `.zshrc` instead).
 - `.gitignore` — tracks configs only; excludes secrets (SSH keys, `known_hosts`),
   caches, and runtime data.
 - `.gitmodules` — the three zsh plugins under `.zsh/plugins/`.
+- `Library/Application Support/Code/User/settings.json` — VS Code user settings;
+  stow links just this file into `~/Library`. Before committing, check its diff:
+  VS Code writes machine-specific entries into it (e.g. `remote.SSH.remotePlatform`
+  host IPs).
